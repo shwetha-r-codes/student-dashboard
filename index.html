@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>StudySpace | Student Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="StudySpace home">
+        <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+        <span>studyspace<span class="brand-dot">.</span></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#dashboard"><span class="nav-icon">▦</span> Overview</a>
+        <a class="nav-link" href="#tasks"><span class="nav-icon">☷</span> My tasks <span class="nav-count" id="navTaskCount">4</span></a>
+        <a class="nav-link" href="#schedule"><span class="nav-icon">▣</span> Schedule</a>
+        <a class="nav-link" href="#subjects"><span class="nav-icon">▤</span> Subjects</a>
+      </nav>
+      <div class="workspace-label second-label">PERSONAL</div>
+      <nav class="main-nav" aria-label="Personal navigation">
+        <a class="nav-link" href="#progress"><span class="nav-icon">◔</span> My progress</a>
+        <a class="nav-link" href="#notes"><span class="nav-icon">▧</span> Quick notes</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="focus-card">
+          <div class="focus-icon">✦</div>
+          <strong>Small steps, big results.</strong>
+          <p>Keep showing up. Your future self will thank you.</p>
+          <div class="focus-progress"><span></span></div>
+          <small>You've got this!</small>
+        </div>
+        <div class="profile-mini">
+          <div class="avatar">S</div>
+          <div class="profile-copy"><strong>Student</strong><span>My workspace</span></div>
+          <button class="more-btn" aria-label="Profile options">•••</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Open menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong>Overview</strong></div>
+        <div class="top-actions">
+          <span class="today-label" id="todayLabel"></span>
+          <button class="icon-button" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">☼</button>
+          <div class="avatar top-avatar">S</div>
+        </div>
+      </header>
+
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow" id="greeting">MONDAY, OCTOBER 2</p>
+          <h1>Hey, Student <span class="wave">✦</span></h1>
+          <p class="welcome-subtitle">Ready to make today count? Here's your study overview.</p>
+        </div>
+        <button class="primary-button" id="addTaskTop"><span>＋</span> Add a task</button>
+      </section>
+
+      <section class="stats-grid" aria-label="Study summary">
+        <article class="stat-card">
+          <div class="stat-top"><span class="stat-icon purple">☷</span><span class="stat-change">Your focus</span></div>
+          <div class="stat-number" id="pendingStat">4</div>
+          <div class="stat-label">Tasks to complete</div>
+          <div class="stat-foot"><span class="tiny-dot purple-dot"></span> Stay on track today</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span class="stat-icon mint">◷</span><span class="stat-change">This week</span></div>
+          <div class="stat-number">12.5 <small>hrs</small></div>
+          <div class="stat-label">Study time</div>
+          <div class="stat-foot"><span class="tiny-dot mint-dot"></span> Time well invested</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span class="stat-icon orange">♧</span><span class="stat-change">Keep it up</span></div>
+          <div class="stat-number">5 <small>days</small></div>
+          <div class="stat-label">Study streak</div>
+          <div class="stat-foot"><span class="tiny-dot orange-dot"></span> You're building a habit</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span class="stat-icon blue">✓</span><span class="stat-change">Great progress</span></div>
+          <div class="stat-number" id="completedStat">8</div>
+          <div class="stat-label">Tasks completed</div>
+          <div class="stat-foot"><span class="tiny-dot blue-dot"></span> One step at a time</div>
+        </article>
+      </section>
+
+      <div class="content-grid">
+        <section class="panel tasks-panel" id="tasks">
+          <div class="panel-heading">
+            <div><h2>Today's tasks</h2><p>A little progress each day adds up.</p></div>
+            <button class="text-button" id="viewAllTasks">View all <span>↗</span></button>
+          </div>
+          <div class="task-progress-line"><span id="taskProgressBar"></span></div>
+          <div class="task-progress-copy"><span id="taskProgressText">0 of 4 completed</span><span id="taskProgressPercent">0%</span></div>
+          <div class="task-list" id="taskList"></div>
+          <button class="add-task-link" id="addTaskBottom">＋ Add a new task</button>
+        </section>
+
+        <section class="panel schedule-panel" id="schedule">
+          <div class="panel-heading">
+            <div><h2>Upcoming schedule</h2><p>Your day, at a glance.</p></div>
+            <button class="more-btn" aria-label="Schedule options">•••</button>
+          </div>
+          <div class="schedule-date"><span class="date-bubble" id="dateDay">02</span><div><strong id="dateMonth">October 2026</strong><span>Study plan</span></div></div>
+          <div class="timeline">
+            <div class="time-slot"><span class="time">09:00</span><span class="timeline-line"><i></i></span><div class="event-card lavender"><span class="event-dot"></span><strong>Mathematics</strong><small>Revision · Chapter 3</small><span class="event-duration">1 hr</span></div></div>
+            <div class="time-slot"><span class="time">11:30</span><span class="timeline-line"><i></i></span><div class="event-card mint-event"><span class="event-dot"></span><strong>Programming in C</strong><small>Practice · Loops</small><span class="event-duration">1.5 hrs</span></div></div>
+            <div class="time-slot"><span class="time">14:00</span><span class="timeline-line"><i></i></span><div class="event-card peach"><span class="event-dot"></span><strong>Physics</strong><small>Lecture notes · Mechanics</small><span class="event-duration">45 min</span></div></div>
+            <div class="time-slot"><span class="time">16:00</span><span class="timeline-line"><i></i></span><div class="event-card blue-event"><span class="event-dot"></span><strong>Project work</strong><small>Team meeting</small><span class="event-duration">1 hr</span></div></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="bottom-grid">
+        <section class="panel subjects-panel" id="subjects">
+          <div class="panel-heading"><div><h2>My subjects</h2><p>Keep your learning balanced.</p></div><button class="text-button" id="manageSubjects">Manage <span>↗</span></button></div>
+          <div class="subject-list">
+            <div class="subject-row"><div class="subject-symbol subject-purple">∑</div><div class="subject-info"><strong>Mathematics</strong><span>8 topics · 5 completed</span><div class="subject-track"><span style="width:62%"></span></div></div><b>62%</b></div>
+            <div class="subject-row"><div class="subject-symbol subject-green">&lt;/&gt;</div><div class="subject-info"><strong>Programming in C</strong><span>10 topics · 4 completed</span><div class="subject-track"><span style="width:40%"></span></div></div><b>40%</b></div>
+            <div class="subject-row"><div class="subject-symbol subject-orange">⚛</div><div class="subject-info"><strong>Physics</strong><span>7 topics · 3 completed</span><div class="subject-track"><span style="width:45%"></span></div></div><b>45%</b></div>
+          </div>
+        </section>
+        <section class="panel notes-panel" id="notes">
+          <div class="panel-heading"><div><h2>Quick notes</h2><p>Save a thought before it slips away.</p></div><span class="note-icon">✎</span></div>
+          <textarea id="quickNote" placeholder="Type a reminder, idea or something to revise..."></textarea>
+          <div class="notes-footer"><span id="noteStatus">Saved on this device</span><button class="save-note" id="saveNote">Save note</button></div>
+        </section>
+      </div>
+      <footer>Made for your learning journey <span>✦</span> <span class="footer-right">StudySpace · Your space to grow</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="taskModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-heading"><div><p class="eyebrow">STAY ORGANIZED</p><h2 id="modalTitle">Add a new task</h2></div><button class="close-modal" id="closeModal" aria-label="Close">×</button></div>
+      <form id="taskForm">
+        <label for="taskTitle">Task name</label>
+        <input id="taskTitle" type="text" maxlength="70" placeholder="e.g. Revise vectors" required>
+        <label for="taskSubject">Subject</label>
+        <select id="taskSubject"><option>Mathematics</option><option>Programming in C</option><option>Physics</option><option>Other</option></select>
+        <label for="taskPriority">Priority</label>
+        <select id="taskPriority"><option value="normal">Normal</option><option value="high">High</option><option value="low">Low</option></select>
+        <div class="modal-actions"><button type="button" class="cancel-button" id="cancelModal">Cancel</button><button class="primary-button" type="submit">Add task</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
